@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="blockly/blockly_compressed.js"></script>
+  <script src="blockly/blocks_compressed.js"></script>
+  <script src="blockly/en.js"></script>
+</head>
+<body>
+
+  <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+
+  <script>
+    var toolbox = document.getElementById("toolbox");
+
+    var options = {
+    	toolbox : toolbox,
+    	collapse : true,
+    	comments : true,
+    	disable : true,
+    	maxBlocks : Infinity,
+    	trashcan : true,
+    	horizontalLayout : false,
+    	toolboxPosition : 'start',
+    	css : true,
+    	media : 'https://blockly-demo.appspot.com/static/media/',
+    	rtl : false,
+    	scrollbars : true,
+    	sounds : true,
+    	oneBasedIndex : true
+    };
+    var workspace = Blockly.inject('blocklyDiv',
+        options);
+    var workspaceBlocks = document.getElementById("workspaceBlocks");
+    Blockly.Xml.domToWorkspace(workspace, workspaceBlocks);
+  </script>
+  <!-- This is the xml file for toolbox -->
+  <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+    <category name="Logic">
+      <block type="controls_if"></block>
+      <block type="logic_compare">
+        <field name="OP">EQ</field>
+      </block>
+      <block type="logic_operation">
+        <field name="OP">AND</field>
+      </block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean">
+        <field name="BOOL">TRUE</field>
+      </block>
+      <block type="logic_null"></block>
+      <block type="logic_ternary"></block>
+    </category>
+    <category name="Loops">
+      <block type="controls_whileUntil">
+        <field name="MODE">WHILE</field>
+      </block>
+      <block type="controls_flow_statements" disabled="true">
+        <field name="FLOW">BREAK</field>
+      </block>
+    </category>
+    <category name="Data">
+      <block type="math_number">
+        <field name="NUM">0</field>
+      </block>
+      <block type="math_arithmetic">
+        <field name="OP">ADD</field>
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_number_property">
+        <mutation divisor_input="false"></mutation>
+        <field name="PROPERTY">EVEN</field>
+        <value name="NUMBER_TO_CHECK">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_modulo">
+        <value name="DIVIDEND">
+          <shadow type="math_number">
+            <field name="NUM">64</field>
+          </shadow>
+        </value>
+        <value name="DIVISOR">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text">
+        <field name="TEXT"></field>
+      </block>
+      <block type="text_join">
+        <mutation items="2"></mutation>
+      </block>
+    </category>
+    <category name="Robot">
+      <block type="import">
+        <field name="package">java.util.*;</field>
+      </block>
+      <block type="opmode">
+        <field name="ClassName">ClassName</field>
+      </block>
+      <block type="variable">
+        <field name="variableType">DcMotor</field>
+        <field name="variableName">variableName</field>
+      </block>
+      <block type="variableset">
+        <field name="variableName">variableName</field>
+      </block>
+      <block type="setpower">
+        <field name="motorName">motorName</field>
+        <field name="power">0</field>
+      </block>
+      <block type="variabledev">
+        <field name="variableName">variableName</field>
+        <field name="variableType">DcMotor.class</field>
+        <field name="deviceName">deviceName</field>
+      </block>
+    </category>
+  </xml>
+
+</body>
+</html>
